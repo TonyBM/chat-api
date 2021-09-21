@@ -3,7 +3,8 @@ class Message
   include Mongoid::Timestamps::Created
   
   field :content, type: String
-  has_one :participant
+  field :participant, type: String
+  embedded_in :chat_room
 
   validates_presence_of :participant
 end

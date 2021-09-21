@@ -13,6 +13,22 @@ class ChatRoomsController < ApplicationController
         
     end
 
+    def send_message
+        chat_room = ChatRoom.find(params[:room_id])
+        participantId = params[:participant]
+
+        return render json: params, status: :bad_request unless chat_room.participants.include?(participantId)
+
+        Message.create!(content: params[:content], participant: participantId, chat_room: chat_room)
+
+        if chat_room.update(messages: chat_room.messages)
+            render json: chat_room
+        else
+            render json: params, status: :unprocesable_entity
+        end         
+        
+    end
+    
     private 
 
     def chat_room_params

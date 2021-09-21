@@ -166,7 +166,6 @@ development:
     # further information. Most applications should not use this option.
     # (default: false)
     # use_utc: false
-
 test:
   clients:
     default:

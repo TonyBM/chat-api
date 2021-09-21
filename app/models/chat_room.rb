@@ -19,5 +19,4 @@ class ChatRoom
   def add_participant(participant)
     self.participants.nil? ? [participant] : self.participants.push(participant)
   end
-
 end
