@@ -1,4 +1,10 @@
 class ChatRoomsController < ApplicationController
+    
+    def index
+        render json: ChatRoom.all
+
+    end
+
     def join_room
         chat_room = ChatRoom.find_by(_id: params[:room_id])
         participantId = Participant.find_by(_id: params[:participant]).id.to_s
